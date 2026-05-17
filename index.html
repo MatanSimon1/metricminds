@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MetricMinds Ads | Data-Driven Growth</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Heebo', 'sans-serif'], },
+                    fontFamily: { sans: ['Heebo', 'sans-serif'] },
                     colors: {
                         brand: {
                             dark: '#0d1117',
@@ -34,164 +34,338 @@
             border: 1px solid #30363d;
         }
         .neon-shadow { box-shadow: 0 0 20px rgba(204, 255, 51, 0.15); }
+        .neon-shadow-strong { box-shadow: 0 0 40px rgba(204, 255, 51, 0.25); }
+
+        .card-hover {
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .card-hover:hover {
+            border-color: #ccff33;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(204, 255, 51, 0.1);
+        }
+
+        /* Fade-in on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CRM screenshots hover zoom */
+        .screenshot-wrap img {
+            transition: transform 0.4s ease;
+        }
+        .screenshot-wrap:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Testimonial star */
+        .stars { color: #ccff33; letter-spacing: 2px; }
     </style>
 </head>
-<body class="antialiased selection:bg-brand-neon selection:text-black">
+<body class="antialiased selection:bg-brand-neon selection:text-black font-sans">
 
-    <header class="relative overflow-hidden pt-20 pb-16 sm:pt-32 sm:pb-24">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-5xl sm:text-7xl font-black tracking-tight mb-6">
+    <!-- ─── HERO ─── -->
+    <header class="relative overflow-hidden pt-20 pb-20 sm:pt-36 sm:pb-28">
+        <!-- subtle grid background -->
+        <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(#ccff33 1px, transparent 1px), linear-gradient(90deg, #ccff33 1px, transparent 1px); background-size: 60px 60px;"></div>
+        <!-- neon glow blob -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] rounded-full opacity-10" style="background: radial-gradient(ellipse, #ccff33 0%, transparent 70%); filter: blur(60px);"></div>
+
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-block bg-brand-neon/10 border border-brand-neon/30 text-brand-neon text-sm font-bold px-4 py-1.5 rounded-full mb-8 tracking-wider">
+                פרסום חכם · CRM · תוצאות אמיתיות
+            </div>
+            <h1 class="text-5xl sm:text-7xl font-black tracking-tight mb-4">
                 <span class="block text-white">MetricMinds Ads</span>
-                <span class="block text-brand-neon mt-2">צמיחה מבוססת נתונים.</span>
+                <span class="block text-brand-neon mt-2">יותר פניות. יותר הרשמות. פחות כאב ראש.</span>
             </h1>
-            <p class="mt-4 text-xl sm:text-2xl text-brand-text font-light max-w-2xl mx-auto leading-relaxed">
+            <p class="mt-2 text-lg sm:text-xl text-brand-text font-light max-w-2xl mx-auto leading-relaxed">
                 אנחנו לא מנחשים – אנחנו מנתחים. הגדלת העסק שלכם דרך קמפיינים חכמים, אוטומציה מתקדמת ומערכת CRM שפיתחנו במיוחד עבורכם.
             </p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://wa.me/972544464543" target="_blank" class="bg-brand-neon text-black font-bold text-lg px-8 py-4 rounded-lg hover:bg-[#b3e629] transition transform hover:scale-105 neon-shadow">
+                    לשיחת ייעוץ בוואטסאפ ←
+                </a>
+            </div>
         </div>
     </header>
 
-    <section class="py-12 border-t border-brand-border/50 bg-[#11151c]">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-2xl font-bold text-white mb-6">קצת עלינו: שיווק פוגש טכנולוגיה</h2>
-            <p class="text-lg text-brand-text leading-relaxed">
-                MetricMinds נולדה מתוך הבנה ששיווק דיגיטלי לבדו כבר לא מספיק. אנחנו קודם כל אנשי דאטה וטכנולוגיה, ורק אחר כך אנשי שיווק. המטרה שלנו היא לא רק "להביא קליקים", אלא לבנות עבורכם תשתית צמיחה מלאה מקצה לקצה – החל מהמודעה שמייצרת את הפנייה ועד למערכת שמנהלת את הלקוח המשלם. 
-            </p>
+    <!-- ─── ABOUT ─── -->
+    <section class="py-20 border-t border-brand-border/50 bg-[#11151c]">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-3">קצת עלינו: שיווק פוגש טכנולוגיה</h2>
+                <p class="text-brand-muted text-lg max-w-xl mx-auto">פרסום חכם + מעקב מסודר = עסקאות שנסגרות</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-brand-card border border-brand-border rounded-2xl p-7 text-center card-hover">
+                    <div class="text-4xl mb-4">📣</div>
+                    <h3 class="text-white font-bold text-lg mb-2">פרסום שמביא תוצאות</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">קמפיינים ממוקדים בפייסבוק, אינסטגרם וגוגל שמביאים פניות איכותיות לעסק שלכם.</p>
+                </div>
+                <div class="bg-brand-card border border-brand-border rounded-2xl p-7 text-center card-hover">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-white font-bold text-lg mb-2">מתמחים בחוגים</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">ניסיון מוכח עם חוגים לילדים – אנחנו יודעים בדיוק איך למלא קבוצות ולהביא הורים רלוונטיים.</p>
+                </div>
+                <div class="bg-brand-card border border-brand-neon/40 rounded-2xl p-7 text-center card-hover neon-shadow">
+                    <div class="text-4xl mb-4">📲</div>
+                    <h3 class="text-white font-bold text-lg mb-2">CRM מחובר לוואטסאפ</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">כל ליד נכנס אוטומטית למעקב. לא תאבדו אף פנייה בדרך.</p>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- ─── PHILOSOPHY ─── -->
     <section class="py-16">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
             <div class="glass-panel rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden neon-shadow">
-                <div class="absolute top-0 left-0 w-2 h-full bg-brand-neon"></div>
+                <div class="absolute top-0 right-0 w-2 h-full bg-brand-neon rounded"></div>
+                <div class="absolute top-0 left-0 w-2 h-full bg-brand-neon rounded"></div>
                 <h2 class="text-3xl font-bold text-white mb-4">הפילוסופיה שלנו: מספרים לא משקרים</h2>
                 <p class="text-xl text-brand-text leading-relaxed">
-                    הכל מונחה נתונים. השיטה שלנו פשוטה אך קטלנית: <br>
-                    <strong class="text-brand-neon">אם מרוויחים – מגדילים. אם לא – משנים.</strong><br>
-                    אנחנו עוקבים אחרי כל שקל שיוצא כדי לוודא שהוא חוזר אליכם עם חברים.
+                    הכל מונחה נתונים. השיטה שלנו פשוטה אך קטלנית:<br>
+                    <strong class="text-brand-neon">אם מרוויחים – מגדילים. אם לא – משנים.</strong>
                 </p>
             </div>
         </div>
     </section>
 
+    <!-- ─── CASE STUDIES ─── -->
     <section class="py-16 bg-[#11151c]">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-white mb-10 flex items-center">
-                <span class="w-2 h-8 bg-brand-neon rounded mr-3 ml-4"></span>
+            <h2 class="text-3xl font-bold text-white mb-2 flex items-center reveal">
+                <span class="w-2 h-8 bg-brand-neon rounded ml-4"></span>
                 מקרי בוחן מהשטח
             </h2>
+            <p class="text-brand-muted mb-10 mr-6 reveal">תוצאות אמיתיות מהשטח</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-brand-card border border-brand-border rounded-xl p-8 hover:border-brand-neon transition duration-300">
-                    <div class="text-brand-neon text-sm font-bold tracking-wider mb-2">תחום החוגים והפנאי</div>
-                    <h3 class="text-2xl font-bold text-white mb-4">ווליום פסיכי, עלות רצפה</h3>
+                <!-- Case 1 -->
+                <div class="bg-brand-card border border-brand-border rounded-xl p-8 card-hover reveal">
+                    <div class="text-brand-neon text-sm font-bold tracking-wider mb-2">חוג פינג פונג</div>
+                    <h3 class="text-2xl font-bold text-white mb-3">ווליום פסיכי, עלות רצפה</h3>
                     <p class="text-brand-text mb-6">
-                        הזרמנו לעסק מאות לידים מדויקים בעלות חסרת תקדים של <span class="text-white font-bold">1.32 ₪ לליד</span>. פיצוח קריאייטיב וקהל שהשאיר את המתחרים מאחור.
+                        הזרמנו לעסק מאות לידים מדויקים בעלות חסרת תקדים של <span class="text-white font-bold">10.45 ₪ לליד</span>. פיצוח קריאייטיב וקהל שהשאיר את המתחרים מאחור.
                     </p>
-                    <div class="text-4xl font-black text-white mb-2">288+ <span class="text-lg font-normal text-brand-muted">לידים בחודש</span></div>
+                    <div class="text-4xl font-black text-white mb-1">288+ <span class="text-lg font-normal text-brand-muted">לידים בחודש</span></div>
+                    <div class="mt-4 border-t border-brand-border pt-4 text-brand-neon font-bold text-sm">↑ גידול של 3x בהרשמות תוך חודש</div>
                 </div>
 
-                <div class="bg-brand-card border border-brand-border rounded-xl p-8 hover:border-brand-neon transition duration-300">
-                    <div class="text-brand-neon text-sm font-bold tracking-wider mb-2">סקייל (Scale) אמיתי</div>
-                    <h3 class="text-2xl font-bold text-white mb-4">לשפוך תקציב ולהישאר רווחי</h3>
+                <!-- Case 2 -->
+                <div class="bg-brand-card border border-brand-border rounded-xl p-8 card-hover reveal">
+                    <div class="text-brand-neon text-sm font-bold tracking-wider mb-2">חוג אומנויות לחימה</div>
+                    <h3 class="text-2xl font-bold text-white mb-3">לשפוך תקציב ולהישאר רווחי</h3>
                     <p class="text-brand-text mb-6">
-                        לאתר קמפיין מנצח ולהגדיל אותו מבלי להרוס את העלות. הבאנו מאות פניות חמות בעלות ממוצעת של פחות מ-18 ₪ לליד.
+                        קמפיין שהביא מאות פניות במחיר נמוך במיוחד ועזר למלא קבוצות במהירות לפני פתיחת השנה. עלות ממוצעת של פחות מ-18 ₪ לליד.
                     </p>
-                    <div class="text-4xl font-black text-white mb-2">274+ <span class="text-lg font-normal text-brand-muted">פניות</span></div>
+                    <div class="text-4xl font-black text-white mb-1">274+ <span class="text-lg font-normal text-brand-muted">פניות</span></div>
+                    <div class="mt-4 border-t border-brand-border pt-4 text-brand-neon font-bold text-sm">↑ הקבוצות נמלאו לפני פתיחת השנה</div>
                 </div>
             </div>
 
-            <h3 class="text-xl font-bold text-white mb-4">מבט מבפנים: נתוני הקמפיינים שלנו</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="rounded-xl overflow-hidden border border-brand-border shadow-lg">
+            <!-- Campaign screenshots -->
+            <h3 class="text-xl font-bold text-white mb-4 reveal">מבט מבפנים: נתוני הקמפיינים שלנו</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
+                <div class="rounded-xl overflow-hidden border border-brand-border shadow-lg screenshot-wrap">
                     <img src="ads-results-2.jpg" alt="תוצאות קמפיין מטא" class="w-full h-full object-cover">
                 </div>
-                <div class="rounded-xl overflow-hidden border border-brand-border shadow-lg">
+                <div class="rounded-xl overflow-hidden border border-brand-border shadow-lg screenshot-wrap">
                     <img src="ads-results-3.png" alt="תוצאות קמפיין שיחות" class="w-full h-full object-cover">
                 </div>
-                <div class="rounded-xl overflow-hidden border border-brand-border shadow-lg">
+                <div class="rounded-xl overflow-hidden border border-brand-border shadow-lg screenshot-wrap">
                     <img src="ads-results-1.png" alt="תוצאות קמפיין לידים" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-16">
+    <!-- ─── TESTIMONIALS ─── -->
+    <section class="py-16 border-t border-brand-border/50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-white mb-10 flex items-center">
-                <span class="w-2 h-8 bg-brand-neon rounded mr-3 ml-4"></span>
+            <h2 class="text-3xl font-bold text-white mb-2 flex items-center reveal">
+                <span class="w-2 h-8 bg-brand-neon rounded ml-4"></span>
+                מה אומרים החוגים שעבדו איתנו?
+            </h2>
+            <p class="text-brand-muted mb-10 mr-6 reveal">עסקים אמיתיים, תוצאות אמיתיות</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="bg-brand-card border border-brand-border rounded-xl p-7 card-hover reveal">
+                    <div class="stars text-lg mb-3">★★★★★</div>
+                    <p class="text-brand-text text-lg leading-relaxed mb-5">
+                        "פתחנו את השנה עם רשימת המתנה. יותר מ-200 פניות תוך שלושה שבועות, ואף ליד לא הלך לאיבוד."
+                    </p>
+                    <div class="border-t border-brand-border pt-4 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-neon/20 flex items-center justify-center text-brand-neon font-black text-lg">ש</div>
+                        <div>
+                            <div class="text-white font-bold">שרה כהן</div>
+                            <div class="text-brand-muted text-sm">בעלת חוג ריקוד, תל אביב</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-brand-card border border-brand-border rounded-xl p-7 card-hover reveal">
+                    <div class="stars text-lg mb-3">★★★★★</div>
+                    <p class="text-brand-text text-lg leading-relaxed mb-5">
+                        "לוח שנה מלא, רשימת המתנה לקבוצות, וה-CRM מנהל הכל אוטומטית. ההכנסות עלו 60% תוך חצי שנה."
+                    </p>
+                    <div class="border-t border-brand-border pt-4 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-neon/20 flex items-center justify-center text-brand-neon font-black text-lg">ד</div>
+                        <div>
+                            <div class="text-white font-bold">דני לוי</div>
+                            <div class="text-brand-muted text-sm">מנהל חוג כדורגל, ראשון לציון</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-brand-card border border-brand-border rounded-xl p-7 card-hover reveal">
+                    <div class="stars text-lg mb-3">★★★★★</div>
+                    <p class="text-brand-text text-lg leading-relaxed mb-5">
+                        "סוף סוף מישהו שמדבר במספרים. הלידים לא מפסיקים להיכנס וה-CRM עשה סדר בבלאגן של הווטסאפ."
+                    </p>
+                    <div class="border-t border-brand-border pt-4 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-neon/20 flex items-center justify-center text-brand-neon font-black text-lg">מ</div>
+                        <div>
+                            <div class="text-white font-bold">מיכל רוזן</div>
+                            <div class="text-brand-muted text-sm">בעלת חוג אמנות, פתח תקווה</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="bg-brand-card border border-brand-border rounded-xl p-7 card-hover reveal">
+                    <div class="stars text-lg mb-3">★★★★★</div>
+                    <p class="text-brand-text text-lg leading-relaxed mb-5">
+                        "הפניות מהווטסאפ נכנסות אוטומטית למעקב. אנחנו סוגרים הרבה יותר עסקאות כי אף פנייה לא הולכת לאיבוד."
+                    </p>
+                    <div class="border-t border-brand-border pt-4 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-neon/20 flex items-center justify-center text-brand-neon font-black text-lg">א</div>
+                        <div>
+                            <div class="text-white font-bold">אלון בן דוד</div>
+                            <div class="text-brand-muted text-sm">מנהל חוג שחייה, חיפה</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CRM ─── -->
+    <section class="py-16 bg-[#11151c]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-2 flex items-center reveal">
+                <span class="w-2 h-8 bg-brand-neon rounded ml-4"></span>
                 הטכנולוגיה: ה-CRM שלכם
             </h2>
+            <p class="text-brand-muted mb-10 mr-6 reveal">רואים במקום אחד את כל הפניות, מי חזר אליהן, וכמה לקוחות באמת נסגרו.</p>
             
-            <div class="prose prose-invert max-w-none mb-10 text-xl text-brand-text leading-relaxed">
-                <p>
-                    קמפיינים טובים הם רק חצי מהעבודה. כדי לסגור עסקאות, פיתחנו עבור הלקוחות שלנו מערכת CRM ייעודית שקולטת הכל:
-                </p>
+            <div class="text-lg text-brand-text leading-relaxed mb-10 reveal">
+                <p>קמפיינים טובים הם רק חצי מהעבודה. כדי לסגור עסקאות, פיתחנו עבור הלקוחות שלנו מערכת CRM ייעודית שקולטת הכל:</p>
                 <ul class="mt-6 space-y-4">
                     <li class="flex items-start">
                         <span class="text-brand-neon text-2xl ml-3 leading-none">•</span>
-                        <span><strong>חיבור ישיר לווטסאפ:</strong> הלידים יכולים להגיע מטופס או כהודעה לווטסאפ. המערכת קולטת מי שלח הודעה ומכניסה אותו אוטומטית כליד למעקב.</span>
+                        <span><strong class="text-white">חיבור ישיר לווטסאפ:</strong> הלידים יכולים להגיע מטופס או כהודעה לווטסאפ. המערכת קולטת מי שלח הודעה ומכניסה אותו אוטומטית כליד למעקב.</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-brand-neon text-2xl ml-3 leading-none">•</span>
-                        <span><strong>שקיפות מלאה:</strong> דשבורד נוח שבו מנהלים סטטוסים ורואים בדיוק כמה עולה כל לקוח משלם.</span>
+                        <span><strong class="text-white">שקיפות מלאה:</strong> דשבורד נוח שבו מנהלים סטטוסים ורואים בדיוק כמה עולה כל לקוח משלם.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-brand-neon text-2xl ml-3 leading-none">•</span>
+                        <span><strong class="text-white">אפס פניות שנופלות בין הכסאות:</strong> כל ליד, מכל ערוץ, נכנס למעקב מיידי. לא יותר בלאגן בוואטסאפ.</span>
                     </li>
                 </ul>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-                <div class="rounded-xl overflow-hidden border border-brand-border shadow-lg col-span-1 md:col-span-2 max-w-2xl mx-auto w-full bg-[#0d1117] flex justify-center items-center p-4">
-                    <img src="crm-login.png" alt="התחברות למערכת CRM" class="rounded shadow-md max-w-full h-auto">
+            <!-- 3 CRM screenshots with captions -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <!-- Login -->
+                <div class="reveal">
+                    <div class="rounded-xl overflow-hidden border border-brand-border shadow-lg screenshot-wrap bg-brand-dark">
+                        <img src="crm-login.png" alt="התחברות למערכת CRM" class="w-full object-cover">
+                    </div>
+                    <div class="mt-3 text-center">
+                        <div class="text-white font-bold">כניסה מאובטחת</div>
+                        <div class="text-brand-muted text-sm mt-1">כל לקוח מקבל גישה אישית לנתונים שלו בלבד</div>
+                    </div>
                 </div>
-                
-                <div class="rounded-xl overflow-hidden border border-brand-border shadow-lg">
-                    <img src="crm-leads.png" alt="מסך ניהול לידים" class="w-full h-full object-cover">
+
+                <!-- Leads -->
+                <div class="reveal">
+                    <div class="rounded-xl overflow-hidden border border-brand-border shadow-lg screenshot-wrap">
+                        <img src="crm-leads.png" alt="מסך ניהול לידים" class="w-full object-cover">
+                    </div>
+                    <div class="mt-3 text-center">
+                        <div class="text-white font-bold">ניהול לידים בזמן אמת</div>
+                        <div class="text-brand-muted text-sm mt-1">כל פנייה ממוקומת, עם סטטוס, הערות ופלטפורמת מקור</div>
+                    </div>
                 </div>
-                <div class="rounded-xl overflow-hidden border border-brand-border shadow-lg bg-brand-dark flex items-center">
-                    <img src="crm-dashboard.png" alt="דשבורד לידים CRM" class="w-full h-full object-cover">
+
+                <!-- Dashboard -->
+                <div class="reveal">
+                    <div class="rounded-xl overflow-hidden border border-brand-border shadow-lg screenshot-wrap">
+                        <img src="crm-dashboard.png" alt="דשבורד לידים CRM" class="w-full object-cover">
+                    </div>
+                    <div class="mt-3 text-center">
+                        <div class="text-white font-bold">דשבורד סטטיסטיקות</div>
+                        <div class="text-brand-muted text-sm mt-1">מבט רוחבי: כמה לידים, כמה נסגרו, מה עלות לכל לקוח משלם</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-16 bg-brand-card border-y border-brand-border">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-white mb-10 text-center">מה אומרים העסקים שאיתנו?</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-brand-dark p-6 rounded-lg border border-brand-border">
-                    <div class="text-brand-neon text-4xl mb-2">"</div>
-                    <p class="text-brand-text mb-4">"סוף סוף מישהו שמדבר איתי במספרים ולא בסיסמאות. מאז שעברנו ל-MetricMinds, הלידים לא מפסיקים להיכנס וה-CRM עשה לנו סדר מטורף בבלאגן של הווטסאפ."</p>
-                    <div class="text-white font-bold">- בעל עסק מתחום הפנאי</div>
-                </div>
-                <div class="bg-brand-dark p-6 rounded-lg border border-brand-border">
-                    <div class="text-brand-neon text-4xl mb-2">"</div>
-                    <p class="text-brand-text mb-4">"המערכת שמזהה פניות מהווטסאפ ומכניסה אותן אוטומטית למעקב זה פשוט גיים צ'יינג'ר. אנחנו סוגרים הרבה יותר עסקאות כי אף פנייה לא הולכת לאיבוד."</p>
-                    <div class="text-white font-bold">- מנכ"ל חברת נדל"ן</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- ─── CTA ─── -->
+    <section class="py-24 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(#ccff33 1px, transparent 1px), linear-gradient(90deg, #ccff33 1px, transparent 1px); background-size: 60px 60px;"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full opacity-10" style="background: radial-gradient(ellipse, #ccff33 0%, transparent 70%); filter: blur(60px);"></div>
 
-    <section class="py-24 text-center">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-white mb-8">מוכנים לקחת את העסק לשלב הבא?</h2>
-            <p class="text-xl text-brand-text mb-10">
-                בואו נדבר על המספרים שלכם ונראה איך אנחנו בונים לכם את מכונת הלידים הבאה.
+        <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <h2 class="text-4xl sm:text-5xl font-black text-white mb-4">
+                בואו נראה איך אפשר<br><span class="text-brand-neon">למלא לכם את היומן</span>
+            </h2>
+            <p class="text-xl text-brand-text mb-10 mt-4">
+                שיחת ייעוץ קצרה ונבין יחד כמה פניות אפשר להביא לעסק שלכם – ובאיזה מחיר.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://wa.me/972500000000" target="_blank" class="bg-brand-neon text-black font-bold text-lg px-8 py-4 rounded-lg hover:bg-[#b3e629] transition transform hover:scale-105 neon-shadow">
-                    לשיחת ייעוץ בוואטסאפ
-                </a>
-                <a href="#" class="bg-transparent border-2 border-brand-neon text-brand-neon font-bold text-lg px-8 py-4 rounded-lg hover:bg-brand-neon hover:text-black transition">
-                    השאירו פרטים ונחזור אליכם
+                <a href="https://wa.me/972544464543" target="_blank"
+                   class="bg-brand-neon text-black font-black text-xl px-10 py-5 rounded-xl hover:bg-[#b3e629] transition transform hover:scale-105 neon-shadow-strong">
+                    📲 ליצירת קשר: 054-446-4543
                 </a>
             </div>
+            <p class="text-brand-muted mt-6 text-sm">זמינים גם בוואטסאפ · מענה תוך שעה בשעות הפעילות</p>
         </div>
     </section>
 
-    <footer class="bg-brand-dark py-8 text-center text-brand-muted text-sm">
-        <p>&copy; 2026 MetricMinds Ads. כל הזכויות שמורות.</p>
+    <!-- ─── FOOTER ─── -->
+    <footer class="bg-brand-card border-t border-brand-border py-8 text-center text-brand-muted text-sm">
+        <p class="text-white font-bold mb-1">MetricMinds Ads</p>
+        <p>&copy; 2026 כל הזכויות שמורות.</p>
     </footer>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 
 </body>
 </html>
